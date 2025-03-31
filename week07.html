@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第7周：摄像头与视觉基础</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第7周：摄像头与视觉基础</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>理解摄像头在机器人中的作用</li>
+            <li>掌握LeRobot中摄像头数据的获取方法</li>
+            <li>编写程序实现颜色检测与跟随</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：40分钟</li>
+            <li>实践操作：70分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（40分钟）</strong>
+                <ul>
+                    <li>摄像头简介（15分钟）</li>
+                    <li>视觉处理基础（15分钟）</li>
+                    <li>LeRobot中摄像头操作（10分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（70分钟）</strong>
+                <ul>
+                    <li>任务1：获取并显示图像（20分钟）</li>
+                    <li>任务2：检测特定颜色（20分钟）</li>
+                    <li>任务3：颜色跟随（30分钟）</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+图像处理演示+分组操作</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查任务1中图像是否正确显示</li>
+            <li>验证任务2中颜色检测是否准确</li>
+            <li>观察任务3中机器人是否跟随颜色移动</li>
+            <li>提问：RGB颜色模型是什么？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（配备摄像头和电机）</li>
+            <li>PPT课件</li>
+            <li>Python与LeRobot环境</li>
+            <li>彩色物体（红、蓝等）</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第7章：摄像头与视觉基础</h3>
+        <p><strong>7.1 什么是摄像头？</strong></p>
+        <p>摄像头是机器人获取视觉信息的传感器，用于拍摄图像或视频。</p>
+        <p><strong>7.2 视觉处理基础</strong></p>
+        <p><strong>图像数据</strong>：由像素组成，每个像素有RGB值（红、绿、蓝）。</p>
+        <ul>
+            <li>示例：(255, 0, 0)表示纯红色</li>
+        </ul>
+        <p><strong>颜色检测</strong>：根据RGB值判断颜色。</p>
+        <p>应用：跟踪物体、识别标记。</p>
+        <p><strong>7.3 LeRobot中摄像头操作</strong></p>
+        <p>API：</p>
+        <ul>
+            <li><code>get_image()</code>：获取图像</li>
+            <li><code>detect_color("red")</code>：检测颜色</li>
+        </ul>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+image = robot.get_image()
+print("图像获取成功")</code></pre>
+        <p><strong>7.4 实践任务</strong></p>
+        <p>任务1：获取并显示图像</p>
+        <pre><code>import lerobot
+import cv2
+robot = lerobot.connect("robot")
+while True:
+    image = robot.get_image()
+    cv2.imshow("Camera", image)
+    if cv2.waitKey(1) == 27:  # 按Esc退出
+        break
+cv2.destroyAllWindows()</code></pre>
+        <p>任务2：检测特定颜色</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+color = robot.detect_color("red")
+if color:
+    print("检测到红色")
+else:
+    print("未检测到红色")</code></pre>
+        <p>任务3：颜色跟随</p>
+        <pre><code>import lerobot
+import time
+robot = lerobot.connect("robot")
+while True:
+    color = robot.detect_color("red")
+    if color:
+        robot.move_forward(0.5)
+    else:
+        robot.stop()
+    time.sleep(0.5)</code></pre>
+        <p><strong>7.5 小结</strong></p>
+        <p>摄像头赋予机器人视觉能力，颜色检测实现简单跟踪。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>修改任务2，检测蓝色并输出结果。</li>
+            <li>调整任务3，当未检测到颜色时让机器人左转寻找。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：摄像头与视觉基础</li>
+            <li>副标题：第7周课程</li>        
+            <li>图片：摄像头+机器人插图</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>理解摄像头作用</li>
+            <li>掌握LeRobot摄像头操作</li>
+            <li>实现颜色检测与跟随</li>
+        </ul>
+        <p><strong>幻灯片3-7：理论讲解</strong></p>
+        <ul>
+            <li>摄像头简介：图像传感器+实物图</li>
+            <li>视觉处理：RGB模型+示意图</li>
+            <li>颜色检测：识别过程+动画</li>
+            <li>LeRobot操作：代码+图像示例</li>
+            <li>应用示例：颜色跟随视频（30秒）</li>
+        </ul>
+        <p><strong>幻灯片8-10：实践任务</strong></p>
+        <ul>
+            <li>任务1：显示图像+截图</li>
+            <li>任务2：检测红色+结果图</li>
+            <li>任务3：跟随移动+路径动画</li>
+        </ul>
+        <p><strong>幻灯片11：总结</strong></p>
+        <ul>
+            <li>摄像头提供视觉数据</li>
+            <li>颜色检测实现简单智能</li>
+            <li>下一节预告：模仿学习简介</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>

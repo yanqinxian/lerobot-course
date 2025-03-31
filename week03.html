@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3周：传感器与数据采集</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第3周：传感器与数据采集</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>理解传感器的基本原理和类型</li>
+            <li>掌握LeRobot中读取传感器数据的方法</li>
+            <li>能够编写程序采集并显示传感器数据</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：40分钟</li>
+            <li>实践操作：70分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（40分钟）</strong>
+                <ul>
+                    <li>传感器简介（15分钟）</li>
+                    <li>传感器在机器人中的作用（10分钟）</li>
+                    <li>LeRobot中传感器操作（15分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（70分钟）</strong>
+                <ul>
+                    <li>任务1：读取距离传感器数据（30分钟）</li>
+                    <li>任务2：读取颜色传感器数据（20分钟）</li>
+                    <li>任务3：综合应用（20分钟）</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+实物演示+分组操作</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查任务1和任务2的数据输出是否正确</li>
+            <li>观察任务3中程序是否成功发出警告</li>
+            <li>提问：距离传感器和颜色传感器分别有什么用途？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（配备距离传感器和颜色传感器）</li>
+            <li>PPT课件</li>
+            <li>Python与LeRobot环境</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第3章：传感器与数据采集</h3>
+        <p><strong>3.1 什么是传感器？</strong></p>
+        <p>传感器是机器人感知环境的“眼睛”和“耳朵”，将物理量转换为电信号。</p>
+        <p><strong>3.2 常见传感器类型</strong></p>
+        <ul>
+            <li><strong>距离传感器</strong>：测量物体距离（如超声波传感器）</li>
+            <li><strong>颜色传感器</strong>：识别物体颜色</li>
+            <li><strong>摄像头</strong>：捕捉图像或视频</li>
+        </ul>
+        <p><strong>3.3 传感器在机器人中的作用</strong></p>
+        <p>提供数据给控制器，用于决策，如避障、导航。</p>
+        <p><strong>3.4 LeRobot中传感器操作</strong></p>
+        <p>使用LeRobot读取数据：</p>
+        <ul>
+            <li>距离传感器：<code>robot.get_distance()</code></li>
+            <li>颜色传感器：<code>robot.get_color()</code></li>
+        </ul>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+distance = robot.get_distance()
+print("距离:", distance)</code></pre>
+        <p><strong>3.5 实践任务</strong></p>
+        <p>任务1：读取距离传感器数据</p>
+        <pre><code>import lerobot
+import time
+robot = lerobot.connect("robot")
+for i in range(5):
+    distance = robot.get_distance()
+    print("障碍物距离:", distance, "厘米")
+    time.sleep(1)</code></pre>
+        <p>任务2：读取颜色传感器数据</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+color = robot.get_color()
+print("检测到的颜色:", color)</code></pre>
+        <p>任务3：综合应用</p>
+        <pre><code>import lerobot
+import time
+robot = lerobot.connect("robot")
+while True:
+    distance = robot.get_distance()
+    if distance < 10:
+        print("警告：障碍物太近！")
+    else:
+        print("安全距离:", distance)
+    time.sleep(1)</code></pre>
+        <p><strong>3.6 小结</strong></p>
+        <p>传感器是机器人感知世界的关键，通过LeRobot可轻松获取数据。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>编写程序，每隔2秒检测一次颜色并输出。</li>
+            <li>修改任务3代码，当距离小于5厘米时停止循环。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：传感器与数据采集</li>
+            <li>副标题：第3周课程</li>        
+            <li>图片：传感器插图+机器人</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>理解传感器原理和类型</li>
+            <li>掌握LeRobot读取传感器数据</li>
+            <li>编写程序采集数据</li>
+        </ul>
+        <p><strong>幻灯片3-7：理论讲解</strong></p>
+        <ul>
+            <li>什么是传感器？：感知设备+图片</li>
+            <li>传感器类型：距离、颜色、摄像头+对比图</li>
+            <li>传感器作用：流程图</li>
+            <li>LeRobot操作：代码+数据读取动画</li>
+            <li>应用示例：避障视频（30秒）</li>
+        </ul>
+        <p><strong>幻灯片8-10：实践任务</strong></p>
+        <ul>
+            <li>任务1：读取距离+输出图</li>
+            <li>任务2：颜色检测+图片</li>
+            <li>任务3：警告效果+动画</li>
+        </ul>
+        <p><strong>幻灯片11：总结</strong></p>
+        <ul>
+            <li>传感器类型：距离、颜色、摄像头</li>
+            <li>LeRobot轻松读取数据</li>
+            <li>下一节预告：执行器与运动控制</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>

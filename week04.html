@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4周：执行器与运动控制</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第4周：执行器与运动控制</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>理解执行器（电机与伺服机）的工作原理</li>
+            <li>掌握LeRobot中控制机器人运动的API</li>
+            <li>能够编写程序实现机器人基本运动</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：40分钟</li>
+            <li>实践操作：70分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（40分钟）</strong>
+                <ul>
+                    <li>执行器简介（15分钟）</li>
+                    <li>电机与伺服机原理（15分钟）</li>
+                    <li>LeRobot运动控制API（10分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（70分钟）</strong>
+                <ul>
+                    <li>任务1：前进与停止（30分钟）</li>
+                    <li>任务2：转向控制（20分钟）</li>
+                    <li>任务3：组合运动（20分钟）</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+实物演示+分组操作</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查任务1和任务2的运动是否正确执行</li>
+            <li>观察任务3中机器人是否完成组合路径</li>
+            <li>提问：PWM信号如何控制伺服机？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（配备电机或伺服机）</li>
+            <li>PPT课件</li>
+            <li>Python与LeRobot环境</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第4章：执行器与运动控制</h3>
+        <p><strong>4.1 什么是执行器？</strong></p>
+        <p>执行器是机器人执行动作的部件，负责将电信号转化为物理运动。</p>
+        <p><strong>4.2 电机原理</strong></p>
+        <ul>
+            <li><strong>直流电机</strong>：通过电流驱动旋转，速度由电压控制</li>
+            <li><strong>步进电机</strong>：分步旋转，适合精确位置控制</li>
+        </ul>
+        <p>示例：小车轮子由直流电机驱动。</p>
+        <p><strong>4.3 伺服机原理</strong></p>
+        <p>伺服机通过PWM（脉宽调制）信号控制角度，如1ms=0°，2ms=180°。</p>
+        <p>示例：机械臂关节用伺服机调整位置。</p>
+        <p><strong>4.4 LeRobot运动控制</strong></p>
+        <p>常用API：</p>
+        <ul>
+            <li><code>robot.move_forward(time)</code>：前进指定时间</li>
+            <li><code>robot.turn_left(degrees)</code>：左转指定角度</li>
+            <li><code>robot.stop()</code>：停止运动</li>
+        </ul>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+robot.move_forward(1)
+robot.stop()</code></pre>
+        <p><strong>4.5 实践任务</strong></p>
+        <p>任务1：前进与停止</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+robot.move_forward(1)
+robot.stop()</code></pre>
+        <p>任务2：转向控制</p>
+        <pre><code>import lerobot
+import time
+robot = lerobot.connect("robot")
+robot.turn_left(90)
+time.sleep(1)
+robot.turn_right(90)</code></pre>
+        <p>任务3：组合运动</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+robot.move_forward(2)
+robot.turn_left(90)
+robot.stop()</code></pre>
+        <p><strong>4.6 小结</strong></p>
+        <p>执行器（如电机、伺服机）是机器人运动的核心，LeRobot提供简单API实现控制。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>修改任务1代码，让机器人前进3秒。</li>
+            <li>编写程序让机器人画一个正方形（前进+转弯4次）。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：执行器与运动控制</li>
+            <li>副标题：第4周课程</li>        
+            <li>图片：电机+机器人移动插图</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>理解执行器工作原理</li>
+            <li>掌握LeRobot运动控制API</li>
+            <li>实现机器人基本运动</li>
+        </ul>
+        <p><strong>幻灯片3-7：理论讲解</strong></p>
+        <ul>
+            <li>什么是执行器？：信号转动作+图片</li>
+            <li>电机原理：直流+步进+动画</li>
+            <li>伺服机原理：PWM波形图</li>
+            <li>LeRobot控制：API功能示意图</li>
+            <li>应用示例：机器人运动视频（30秒）</li>
+        </ul>
+        <p><strong>幻灯片8-10：实践任务</strong></p>
+        <ul>
+            <li>任务1：前进1秒+轨迹图</li>
+            <li>任务2：转向90度+动画</li>
+            <li>任务3：组合路径+示意图</li>
+        </ul>
+        <p><strong>幻灯片11：总结</strong></p>
+        <ul>
+            <li>执行器：电机驱动，伺服机定位</li>
+            <li>LeRobot控制运动简单高效</li>
+            <li>下一节预告：条件与循环逻辑</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>

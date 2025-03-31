@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1周：认识机器人与LeRobot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第1周：认识机器人与LeRobot</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>理解机器人的基本组成（传感器、执行器、控制器）</li>
+            <li>了解LeRobot框架的功能与应用</li>
+            <li>完成LeRobot开发环境的安装与测试</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：40分钟</li>
+            <li>实践操作：70分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（40分钟）</strong>
+                <ul>
+                    <li>什么是机器人？（10分钟）：定义、三大部件</li>
+                    <li>LeRobot简介（20分钟）：特性、应用</li>
+                    <li>安装与配置LeRobot环境（10分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（70分钟）</strong>
+                <ul>
+                    <li>任务1：安装LeRobot环境（40分钟）</li>
+                    <li>任务2：运行示例程序（30分钟）：控制机械臂移动</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+教师讲解+分组实践</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查每组是否成功安装LeRobot环境</li>
+            <li>观察示例程序运行效果</li>
+            <li>提问：机器人三大部件分别是什么？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（支持LeRobot，如机械臂）</li>
+            <li>PPT课件</li>
+            <li>安装指南文档</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第1章：认识机器人与LeRobot</h3>
+        <p><strong>1.1 什么是机器人？</strong></p>
+        <p>机器人是一种可以自动执行任务的机器，通常由三部分组成：</p>
+        <ul>
+            <li><strong>传感器</strong>：感知环境（如摄像头、超声波传感器）</li>
+            <li><strong>控制器</strong>：处理信息并做出决策（如微处理器）</li>
+            <li><strong>执行器</strong>：执行动作（如电机、机械臂）</li>
+        </ul>
+        <p>示例：扫地机器人用传感器探测灰尘，控制器规划路径，电机驱动移动。</p>
+        <p><strong>1.2 LeRobot简介</strong></p>
+        <p>LeRobot是一个开源的机器人编程框架，由xAI开发。</p>
+        <ul>
+            <li>特点：简单易用，适合初学者</li>
+            <li>支持模仿学习和强化学习</li>
+            <li>可控制多种机器人硬件</li>
+        </ul>
+        <p>应用：可以用LeRobot让机械臂抓取物体，或让小车自动避障。</p>
+        <p><strong>1.3 安装LeRobot环境</strong></p>
+        <p>步骤：</p>
+        <ol>
+            <li>安装Python（推荐3.8+版本）</li>
+            <li>安装PyTorch（支持GPU更佳）</li>
+            <li>通过pip安装LeRobot：<code>pip install lerobot</code></li>
+            <li>测试环境：<code>python -c "import lerobot; print(lerobot.__version__)"</code></li>
+        </ol>
+        <p>注意事项：确保网络畅通，检查硬件兼容性。</p>
+        <p><strong>1.4 实践任务</strong></p>
+        <p>任务：运行LeRobot自带示例程序</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("arm")
+robot.move_to([0.1, 0.2, 0.3])</code></pre>
+        <p>挑战：尝试修改代码，让机械臂抬高10厘米。</p>
+        <p><strong>1.5 小结</strong></p>
+        <p>机器人由传感器、控制器和执行器组成。LeRobot是一个强大的工具，可以帮助我们轻松控制机器人。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>写出机器人三大部件的名称和作用。</li>
+            <li>在家尝试安装Python，并记录遇到的问题。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：认识机器人与LeRobot</li>
+            <li>副标题：第1周课程</li>
+            <li>图片：机器人插图</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>理解机器人的基本组成</li>
+            <li>了解LeRobot的功能</li>
+            <li>完成LeRobot环境的安装与测试</li>
+        </ul>
+        <p><strong>幻灯片3-5：什么是机器人？</strong></p>
+        <ul>
+            <li>定义：机器人是能感知、思考、行动的智能设备</li>
+            <li>三大部件：传感器、控制器、执行器</li>
+            <li>视频演示：机器人工作过程（3分钟）</li>
+        </ul>
+        <p><strong>幻灯片6-8：LeRobot简介</strong></p>
+        <ul>
+            <li>背景：由xAI开发，基于PyTorch</li>
+            <li>特点：简单易用，支持学习算法</li>
+            <li>应用：机械臂控制、移动机器人导航</li>
+        </ul>
+        <p><strong>幻灯片9-10：安装LeRobot</strong></p>
+        <ul>
+            <li>步骤：安装Python、PyTorch、LeRobot</li>
+            <li>测试代码：<code>import lerobot; print(lerobot.__version__)</code></li>
+        </ul>
+        <p><strong>幻灯片11-13：实践任务</strong></p>
+        <ul>
+            <li>任务1：安装LeRobot环境</li>
+            <li>任务2：运行示例程序</li>
+            <li>挑战：修改代码抬高机械臂</li>
+        </ul>
+        <p><strong>幻灯片14：总结</strong></p>
+        <ul>
+            <li>机器人三大部件：传感器、控制器、执行器</li>
+            <li>LeRobot：简单易用的编程工具</li>
+            <li>下一节预告：Python编程基础</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第11周：团队创意项目</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第11周：团队创意项目</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>激发学生创意，设计独特机器人任务</li>
+            <li>培养团队协作与项目管理能力</li>
+            <li>完成并展示创意项目成果</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：30分钟</li>
+            <li>实践操作：80分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（30分钟）</strong>
+                <ul>
+                    <li>项目概述（10分钟）</li>
+                    <li>团队分工与计划（10分钟）</li>
+                    <li>实现方法（10分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（80分钟）</strong>
+                <ul>
+                    <li>任务1：项目头脑风暴（20分钟）</li>
+                    <li>任务2：程序设计与实现（40分钟）</li>
+                    <li>任务3：测试与准备展示（20分钟）</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+创意项目案例+分组合作</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查任务1中项目主题是否明确</li>
+            <li>验证任务2中代码与硬件是否正常运行</li>
+            <li>观察任务3中展示准备情况</li>
+            <li>提问：团队协作中遇到的问题如何解决？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（传感器、执行器、摄像头等）</li>
+            <li>PPT课件</li>
+            <li>Python与LeRobot环境</li>
+            <li>辅助材料（积木、彩纸等）</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第11章：团队创意项目</h3>
+        <p><strong>11.1 项目概述</strong></p>
+        <p>目标：设计一个独特的机器人任务。</p>
+        <p>示例：</p>
+        <ul>
+            <li>机器人舞蹈：按节奏移动</li>
+            <li>物体分拣：按颜色分类</li>
+        </ul>
+        <p><strong>11.2 团队分工与计划</strong></p>
+        <p><strong>角色</strong>：</p>
+        <ul>
+            <li>程序员：编写控制代码</li>
+            <li>硬件师：连接传感器与执行器</li>
+            <li>测试员：调试与验证</li>
+        </ul>
+        <p><strong>时间表</strong>：</p>
+        <ol>
+            <li>头脑风暴（20分钟）</li>
+            <li>实现代码与硬件（40分钟）</li>
+            <li>测试与优化（20分钟）</li>
+        </ol>
+        <p><strong>11.3 实现方法</strong></p>
+        <p>综合利用传感器、执行器和视觉。</p>
+        <p>示例（机器人舞蹈）：</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+for i in range(3):
+    robot.move_forward(1)
+    robot.turn_left(90)
+    time.sleep(0.5)</code></pre>
+        <p><strong>11.4 实践任务</strong></p>
+        <p>任务1：头脑风暴</p>
+        <p>团队讨论并记录项目主题（如“颜色分拣”）。</p>
+        <p>任务2：程序设计与实现</p>
+        <p>示例（颜色分拣）：</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("arm")
+while True:
+    pos = robot.detect_object("red")
+    if pos:
+        robot.move_to(pos[0], pos[1], pos[2])
+        robot.grasp()
+        robot.move_to(0, 0, 0.1)  # 放下位置
+        robot.release()</code></pre>
+        <p>任务3：测试与准备展示</p>
+        <p>运行程序并录制视频。</p>
+        <p><strong>11.5 小结</strong></p>
+        <p>创意项目展示综合能力，团队协作是成功关键。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>写下团队分工和时间计划。</li>
+            <li>优化项目代码，添加新功能。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：团队创意项目</li>
+            <li>副标题：第11周课程</li>        
+            <li>图片：团队合作+机器人插图</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>设计创意机器人任务</li>
+            <li>培养团队协作能力</li>
+            <li>完成项目并准备展示</li>
+        </ul>
+        <p><strong>幻灯片3-6：理论讲解</strong></p>
+        <ul>
+            <li>项目概述：独特任务+示例图</li>
+            <li>团队分工：角色+职责图</li>
+            <li>计划与实现：流程+动画</li>
+            <li>案例演示：创意项目视频（30秒）</li>
+        </ul>
+        <p><strong>幻灯片7-9：实践任务</strong></p>
+        <ul>
+            <li>任务1：头脑风暴+讨论图</li>
+            <li>任务2：程序实现+代码</li>
+            <li>任务3：测试展示+效果图</li>
+        </ul>
+        <p><strong>幻灯片10：总结</strong></p>
+        <ul>
+            <li>创意激发潜能，协作提升效率</li>
+            <li>下一节预告：成果展示与总结</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第9周：进阶项目 - 物体抓取</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第9周：进阶项目 - 物体抓取</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>综合运用视觉处理与运动控制</li>
+            <li>实现机械臂的物体抓取功能</li>
+            <li>提升项目设计与调试能力</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：30分钟</li>
+            <li>实践操作：80分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（30分钟）</strong>
+                <ul>
+                    <li>项目概述（10分钟）</li>
+                    <li>需求分析与设计（10分钟）</li>
+                    <li>LeRobot抓取实现（10分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（80分钟）</strong>
+                <ul>
+                    <li>任务1：视觉定位物体（30分钟）</li>
+                    <li>任务2：机械臂移动与抓取（30分钟）</li>
+                    <li>任务3：测试与优化（20分钟）</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+抓取演示+分组合作</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查任务1中物体坐标是否正确输出</li>
+            <li>验证任务2中机械臂是否成功抓取</li>
+            <li>观察任务3中优化效果</li>
+            <li>提问：视觉定位在抓取中的作用是什么？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（配备摄像头和机械臂）</li>
+            <li>PPT课件</li>
+            <li>Python与LeRobot环境</li>
+            <li>抓取目标（红色小物体，如积木）</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第9章：进阶项目 - 物体抓取</h3>
+        <p><strong>9.1 项目概述</strong></p>
+        <p>目标：通过视觉引导机械臂抓取指定物体。</p>
+        <p><strong>9.2 需求分析</strong></p>
+        <p>输入：摄像头检测物体位置；输出：机械臂移动并抓取。</p>
+        <p>流程：</p>
+        <ol>
+            <li>用摄像头定位物体坐标</li>
+            <li>计算机械臂移动路径</li>
+            <li>执行抓取动作</li>
+        </ol>
+        <p><strong>9.3 LeRobot抓取实现</strong></p>
+        <p>API：</p>
+        <ul>
+            <li><code>detect_object(color)</code>：返回物体坐标</li>
+            <li><code>move_to(x, y, z)</code>：移动到指定位置</li>
+            <li><code>grasp()</code>：执行抓取</li>
+        </ul>
+        <pre><code>import lerobot
+robot = lerobot.connect("arm")
+pos = robot.detect_object("red")
+robot.move_to(pos[0], pos[1], pos[2])
+robot.grasp()</code></pre>
+        <p><strong>9.4 实践任务</strong></p>
+        <p>任务1：视觉定位物体</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("arm")
+pos = robot.detect_object("red")
+if pos:
+    print("物体坐标:", pos)
+else:
+    print("未检测到物体")</code></pre>
+        <p>任务2：机械臂移动与抓取</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("arm")
+pos = robot.detect_object("red")
+if pos:
+    robot.move_to(pos[0], pos[1], pos[2])
+    robot.grasp()
+    print("抓取成功")</code></pre>
+        <p>任务3：测试与优化</p>
+        <pre><code>robot.move_to(pos[0], pos[1], pos[2] + 0.05)  # 抬高5厘米
+robot.grasp()
+robot.move_to(0, 0, 0.1)  # 放下位置
+robot.release()</code></pre>
+        <p><strong>9.5 小结</strong></p>
+        <p>物体抓取结合视觉与运动控制，调试是成功关键。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>修改代码，抓取蓝色物体。</li>
+            <li>添加放下动作，形成抓取-放下循环。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：进阶项目 - 物体抓取</li>
+            <li>副标题：第9周课程</li>        
+            <li>图片：机械臂抓取插图</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>综合视觉与运动控制</li>
+            <li>实现机械臂抓取</li>
+            <li>提升项目调试能力</li>
+        </ul>
+        <p><strong>幻灯片3-6：理论讲解</strong></p>
+        <ul>
+            <li>项目概述：视觉引导抓取+图片</li>
+            <li>需求分析：定位+路径+流程图</li>
+            <li>LeRobot实现：API+抓取动画</li>
+            <li>演示：机械臂抓取视频（30秒）</li>
+        </ul>
+        <p><strong>幻灯片7-9：实践任务</strong></p>
+        <ul>
+            <li>任务1：视觉定位+坐标图</li>
+            <li>任务2：移动抓取+动作动画</li>
+            <li>任务3：优化+效果图</li>
+        </ul>
+        <p><strong>幻灯片10：总结</strong></p>
+        <ul>
+            <li>视觉与运动结合实现抓取</li>
+            <li>调试是项目成功关键</li>
+            <li>下一节预告：优化与调试</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>

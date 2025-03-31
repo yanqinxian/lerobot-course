@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第10周：优化与调试</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第10周：优化与调试</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>掌握程序调试的基本方法</li>
+            <li>学习代码优化的常见技巧</li>
+            <li>优化前几周的项目代码</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：40分钟</li>
+            <li>实践操作：70分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（40分钟）</strong>
+                <ul>
+                    <li>调试基础（15分钟）</li>
+                    <li>优化技巧（15分钟）</li>
+                    <li>项目优化示例（10分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（70分钟）</strong>
+                <ul>
+                    <li>任务1：调试简单程序（20分钟）</li>
+                    <li>任务2：优化移动控制（20分钟）</li>
+                    <li>任务3：优化项目代码（30分钟）</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+错误代码演示+分组操作</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查任务1中是否成功修复错误</li>
+            <li>验证任务2中优化后的运动是否更流畅</li>
+            <li>观察任务3中项目代码的改进效果</li>
+            <li>提问：调试时print语句的作用是什么？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（移动机器人或机械臂）</li>
+            <li>PPT课件</li>
+            <li>Python与LeRobot环境</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第10章：优化与调试</h3>
+        <p><strong>10.1 调试基础</strong></p>
+        <p><strong>常见错误</strong>：</p>
+        <ul>
+            <li>语法错误：拼写或格式问题</li>
+            <li>逻辑错误：运行但结果不对</li>
+            <li>运行时错误：程序崩溃</li>
+        </ul>
+        <p><strong>调试方法</strong>：</p>
+        <ul>
+            <li><code>print()</code>：输出变量值</li>
+            <li><code>breakpoint()</code>：暂停检查状态</li>
+        </ul>
+        <pre><code>distance = robot.get_distance()
+print("距离:", distance)</code></pre>
+        <p><strong>10.2 优化技巧</strong></p>
+        <p><strong>减少重复</strong>：用函数封装。</p>
+        <pre><code>def move_and_stop(robot, time):
+    robot.move_forward(time)
+    robot.stop()</code></pre>
+        <p><strong>提高效率</strong>：减少不必要循环。</p>
+        <p><strong>10.3 实践任务</strong></p>
+        <p>任务1：调试简单程序</p>
+        <p>错误代码：</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+distance = robot.get_distance()
+if distance < "10":  # 类型错误
+    print("太近了")</code></pre>
+        <p>修复后：</p>
+        <pre><code>if distance < 10:
+    print("太近了")</code></pre>
+        <p>任务2：优化移动控制</p>
+        <p>原代码（第4周）：</p>
+        <pre><code>robot.move_forward(1)
+robot.stop()
+robot.turn_left(90)
+robot.stop()</code></pre>
+        <p>优化后：</p>
+        <pre><code>def move_turn(robot, time, angle):
+    robot.move_forward(time)
+    robot.turn_left(angle)
+move_turn(robot, 1, 90)</code></pre>
+        <p>任务3：优化项目代码</p>
+        <p>原迷宫导航（第6周）：</p>
+        <pre><code>while True:
+    front_distance = robot.get_distance("front")
+    right_distance = robot.get_distance("right")
+    if right_distance > 20:
+        robot.turn_right(90)
+    elif front_distance < 10:
+        robot.turn_left(90)
+    else:
+        robot.move_forward(0.5)
+    time.sleep(0.5)</code></pre>
+        <p>优化后：</p>
+        <pre><code>def navigate(robot):
+    front = robot.get_distance("front")
+    right = robot.get_distance("right")
+    if right > 20:
+        return "right", 90
+    elif front < 10:
+        return "left", 90
+    else:
+        return "forward", 0.5
+while True:
+    action, param = navigate(robot)
+    if action == "forward":
+        robot.move_forward(param)
+    else:
+        robot.turn(action, param)
+    time.sleep(0.5)</code></pre>
+        <p><strong>10.4 小结</strong></p>
+        <p>调试确保程序正确，优化提升效率。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>找出并修复一个有逻辑错误的代码。</li>
+            <li>优化第7周颜色跟随代码，减少重复检测。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：优化与调试</li>
+            <li>副标题：第10周课程</li>        
+            <li>图片：代码调试插图</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>掌握调试方法</li>
+            <li>学习优化技巧</li>
+            <li>改进项目代码</li>
+        </ul>
+        <p><strong>幻灯片3-7：理论讲解</strong></p>
+        <ul>
+            <li>调试基础：错误类型+示例</li>
+            <li>调试工具：print+breakpoint+动画</li>
+            <li>优化技巧：函数封装+效率图</li>
+            <li>优化示例：迷宫导航前后对比</li>
+            <li>演示：调试优化视频（30秒）</li>
+        </ul>
+        <p><strong>幻灯片8-10：实践任务</strong></p>
+        <ul>
+            <li>任务1：修复错误+提示图</li>
+            <li>任务2：优化移动+动画</li>
+            <li>任务3：项目优化+对比图</li>
+        </ul>
+        <p><strong>幻灯片11：总结</strong></p>
+        <ul>
+            <li>调试解决错误，优化提升性能</li>
+            <li>项目优化需实践积累</li>
+            <li>下一节预告：团队创意项目</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>

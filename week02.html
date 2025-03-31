@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第2周：Python编程基础</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>第2周：Python编程基础</h1>
+        
+        <h2>教案</h2>
+        <p><strong>教学目标</strong></p>
+        <ul>
+            <li>掌握Python的基本语法（变量、循环、条件语句）</li>
+            <li>理解函数和模块的概念</li>
+            <li>能够编写简单的Python程序控制机器人</li>
+        </ul>
+        <p><strong>教学时间</strong></p>
+        <p>总时长：2小时</p>
+        <ul>
+            <li>理论讲解：40分钟</li>
+            <li>实践操作：70分钟</li>
+            <li>总结与答疑：10分钟</li>
+        </ul>
+        <p><strong>教学内容</strong></p>
+        <ol>
+            <li><strong>理论部分（40分钟）</strong>
+                <ul>
+                    <li>Python简介与变量（10分钟）</li>
+                    <li>条件语句（10分钟）</li>
+                    <li>循环语句（10分钟）</li>
+                    <li>函数与模块（10分钟）</li>
+                </ul>
+            </li>
+            <li><strong>实践部分（70分钟）</strong>
+                <ul>
+                    <li>任务1：变量与条件语句练习（30分钟）</li>
+                    <li>任务2：循环与函数练习（20分钟）</li>
+                    <li>任务3：结合LeRobot控制机器人（20分钟）</li>
+                </ul>
+            </li>
+            <li><strong>总结与答疑（10分钟）</strong></li>
+        </ol>
+        <p><strong>教学方法</strong></p>
+        <p>PPT展示+代码演示+分组编程</p>
+        <p><strong>评估方式</strong></p>
+        <ul>
+            <li>检查任务1和任务2的代码运行结果</li>
+            <li>观察任务3中机器人是否正确执行动作</li>
+            <li>提问：循环和条件语句的区别是什么？</li>
+        </ul>
+        <p><strong>所需材料</strong></p>
+        <ul>
+            <li>电脑（每组1台）</li>
+            <li>机器人硬件（带LED灯和移动功能）</li>
+            <li>PPT课件</li>
+            <li>Python编程环境</li>
+        </ul>
+
+        <h2>教材内容</h2>
+        <h3>第2章：Python编程基础</h3>
+        <p><strong>2.1 Python简介</strong></p>
+        <p>Python是一种简单易学的编程语言，广泛用于机器人和人工智能开发。</p>
+        <p><strong>2.2 变量</strong></p>
+        <p>变量是用来存储数据的名称。</p>
+        <pre><code>speed = 10
+print(speed)</code></pre>
+        <p><strong>2.3 条件语句</strong></p>
+        <p>使用if-else根据条件执行不同代码。</p>
+        <pre><code>number = 15
+if number > 10:
+    print("大于10")
+else:
+    print("小于等于10")</code></pre>
+        <p><strong>2.4 循环语句</strong></p>
+        <p><strong>for循环</strong>：已知循环次数时使用。</p>
+        <pre><code>for i in range(5):
+    print("Hello")</code></pre>
+        <p><strong>while循环</strong>：条件满足时持续执行。</p>
+        <pre><code>count = 0
+while count < 3:
+    print("计数:", count)
+    count = count + 1</code></pre>
+        <p><strong>2.5 函数与模块</strong></p>
+        <p><strong>函数</strong>：定义可重用的代码块。</p>
+        <pre><code>def say_hello():
+    print("你好，机器人！")
+say_hello()</code></pre>
+        <p><strong>模块</strong>：导入外部功能。</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("arm")</code></pre>
+        <p><strong>2.6 实践任务</strong></p>
+        <p>任务1：判断数字大小</p>
+        <pre><code>num = int(input("请输入一个数字："))
+if num > 10:
+    print("数字大于10")
+else:
+    print("数字小于等于10")</code></pre>
+        <p>任务2：LED灯闪烁</p>
+        <pre><code>import lerobot
+import time
+robot = lerobot.connect("robot")
+for i in range(5):
+    robot.led_on()
+    time.sleep(0.5)
+    robot.led_off()
+    time.sleep(0.5)</code></pre>
+        <p>任务3：机器人移动</p>
+        <pre><code>import lerobot
+robot = lerobot.connect("robot")
+robot.move_forward(1)
+robot.stop()</code></pre>
+        <p><strong>2.7 小结</strong></p>
+        <p>Python是机器人编程的基础语言，掌握变量、条件、循环和函数是编写控制程序的关键。</p>
+        <p><strong>课后练习</strong></p>
+        <ol>
+            <li>编写一个程序，用for循环打印1到10。</li>
+            <li>修改任务3代码，让机器人前进2秒后左转。</li>
+        </ol>
+
+        <h2>课件PPT内容</h2>
+        <p><strong>幻灯片1：封面</strong></p>
+        <ul>
+            <li>标题：Python编程基础</li>
+            <li>副标题：第2周课程</li>        
+            <li>图片：Python标志+机器人</li>
+        </ul>
+        <p><strong>幻灯片2：学习目标</strong></p>
+        <ul>
+            <li>掌握Python基本语法</li>
+            <li>理解函数和模块</li>
+            <li>编写程序控制机器人</li>
+        </ul>
+        <p><strong>幻灯片3-7：理论讲解</strong></p>
+        <ul>
+            <li>Python简介：简单易学，广泛应用</li>
+            <li>变量：代码+赋值动画</li>
+            <li>条件语句：if-else流程图</li>
+            <li>循环语句：for和while示例+动画</li>
+            <li>函数与模块：代码+模块导入示意图</li>
+        </ul>
+        <p><strong>幻灯片8-10：实践任务</strong></p>
+        <ul>
+            <li>任务1：判断数字大小</li>
+            <li>任务2：LED灯闪烁+动画</li>
+            <li>任务3：机器人移动+图片</li>
+        </ul>
+        <p><strong>幻灯片11：总结</strong></p>
+        <ul>
+            <li>变量存储数据，条件控制流程</li>
+            <li>循环重复执行，函数提高效率</li>
+            <li>下一节预告：传感器与数据采集</li>
+        </ul>
+
+        <a href="index.html" class="back-link">返回主页</a>
+    </div>
+</body>
+</html>
